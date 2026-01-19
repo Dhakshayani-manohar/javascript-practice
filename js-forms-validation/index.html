@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="form practice">
+    <title>card payment</title>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #d8dddb;
+            
+        }
+
+        form {
+            background: whitesmoke;
+            padding: 10px;
+            width: 100%;
+            max-width: 500px;
+            display: grid;
+            gap: 20px;
+            border-radius: 10px;
+
+        }
+
+        h2 {
+            margin-top: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        input {
+            padding: 10px;
+            border: 1px solid #d1c1c1;
+            border-radius: 8px;
+        }
+
+        button {
+            padding: 10px;
+            border: none;
+            background: #2563eb;
+            color: ghostwhite;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        button:hover {
+            background: #1e40af;
+            color: black;
+        }
+
+        small {
+            font-size: small;
+            color: red;
+        }
+    </style>
+
+
+
+
+</head>
+
+<body>
+    <form id="paymentform">
+        <h2> PAYMENT DETAILS </h2>
+
+        <input type="text" id="username" placeholder="Enter your user name">
+        <small id="usererror"></small>
+        <input type="email" id="email" placeholder="Enter your mail id">
+        <small id="emailerror"></small>
+        <input type="text" id="cardnumber" placeholder="Card number">
+        <small id="carderror"></small>
+        <input type="text" id="cvv" placeholder="CVV number">
+        <small id="cvverror"></small>
+        <input type="text" id="expiry" placeholder="MM/YY">
+        <small id="dateerror"></small>
+        <input type="text" id="otp" placeholder="4 Digit OTP">
+        <small id="otperror"></small>
+
+        <button type="submit">pay now</button>
+    </form>
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("paymentform");
+
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+
+                
+                
+                const username = document.getElementById("username").value;
+                const mail = document.getElementById("email").value;
+                const card = document.getElementById("cardnumber").value;
+                const cvv = document.getElementById("cvv").value;
+                const expiry = document.getElementById("expiry").value;
+                const otp = document.getElementById("otp").value;
+                const userError = document.getElementById("usererror");
+                const emailError = document.getElementById("emailerror");
+                const cardError = document.getElementById("carderror");
+                const cvvError = document.getElementById("cvverror");
+                const dateError = document.getElementById("dateerror");
+                const otpError = document.getElementById("otperror");
+
+
+                // RegEx Pattern
+                const namepattern = /^[A-Za-z ]{3,}$/;
+                //  dhaks.uma@gmail.com
+                // const emailpattern = /^[a-zA-z0-9.-+*]+@[A-Za-z]+\.[A-Za-z]{2,}$/;
+                const emailpattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                //  \d for digits only
+                const cardpattern = /^\d{16}$/;
+                const cvvpattern = /^\d{3}$/;
+                //  MM/YY === eg 04/95
+                const expirypattern = /^(0[1-9]|1[0-2])\/\d{2}$/;
+                const otppattern = /^\d{4}$/;
+
+                if (!namepattern.test(username)) {
+                    userError.textContent = "invalid Username";
+                    let hasError = true;
+                    return;
+                
+                }
+                else {
+                    userError.textContent = "";
+
+                }
+
+
+                if (!emailpattern.test(mail)) {
+                    emailError.textContent = "invalid mail id";
+                     return;
+                    
+                }
+                else {
+                    emailError.textContent = "";
+
+                }
+
+                if (!cardpattern.test(card)) {
+                    cardError.textContent = "cardnumber must be 16 digits";
+                    
+                      return;
+                    
+                }
+                else {
+                    cardError.textContent = "";
+
+                }
+                if (!cvvpattern.test(cvv)) {
+                    cvvError.textContent = "cvv must be 3 digits";
+                     
+                      return;
+                    
+                }
+                else {
+                    cvvError.textContent = "";
+
+                }
+                if (!expirypattern.test(expiry)) {
+                    dateError.textContent = "expiry must be MM/YY format ";
+                     
+                      return;
+                    
+                }
+                else {
+                    dateError.textContent = "";
+
+                }
+                if (!otppattern.test(otp)) {
+                    otpError.textContent = "otp must be 4 digits";
+                     
+                      return;
+                    
+                }
+                else {
+                    otpError.textContent = "";
+
+                }
+
+                form.reset();
+
+                window.location.href = "success.html";
+            })
+
+        })
+    </script>
+</body>
+
+</html>

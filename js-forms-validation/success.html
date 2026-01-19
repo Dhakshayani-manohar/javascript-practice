@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="another html">
+    <title>success message</title>
+
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            background: #d8dddb;
+        }
+        img {
+            width: 200px;
+            height: 200px;
+            display: block;
+            border-radius:35%;
+        }
+        h1{
+            color:#047857;
+        }
+        button{
+            margin-top: 20px;
+            padding: 10px;
+            background: #2563eb;
+            border: none;
+            border-radius: 8px;
+            color:white;
+        }
+        button:hover{
+             background: #1e40af;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Payment Successful </h1>
+    <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExazR4Mm40NXk3ZjR6bjVweXA5ZTYycnBkNmx0Zms5Y285cHZmMTh4bCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vxseYpI4M8tYMehu3w/giphy.gif" alt="success animation">
+        </body>
+    <button onclick="goback()" >Go Back</button>
+    <script>
+        function goback(){
+            window.location.href ="index.html";
+        }
+    </script>
+</html>
